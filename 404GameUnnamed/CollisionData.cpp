@@ -34,9 +34,42 @@ bool CollisionData::AABBCollisionTest(const AABB* const aabb1, const AABB* const
 
 bool CollisionData::groundCollision(Entity* object1, Entity* object2)
 {
-	vec3 start = object1->getPosition() + vec3(0, 0, 0);
-	vec3 end = object1->getPosition() + vec3(0, 1, 0);
-	vec3 testIntersection;
+	vec3 start = object1->getPosition();
 
-	if (AABBCollisionTest(object1->getAABB(), object2->getAABB())
+	if (AABBCollisionTest(object1->getAABB(), object2->getAABB()) == true)
+	{
+		vec3 start = object1->getPosition();
+		if (yCollision(object1->getAABB(), object2->getAABB()) == true)
+		{
+			object1->setPosition(start);
+			return true;
+		}
+		else
+			return false;
+	}
+}
+
+bool CollisionData::playerObjectCollision(Entity* object1, Entity* object2)
+{
+	if (AABBCollisionTest(object1->getAABB(), object2->getAABB()) == true)
+	{
+		vec3 start = object1->getPosition();
+		if (yCollision(object1->getAABB(), object2->getAABB()) == true)
+		{
+			object1->setPosition(start);
+			return true;
+		}
+		if (xCollision(object1->getAABB(), object2->getAABB()) == true)
+		{
+			object1->setPosition(start);
+			return true;
+		}
+		if (zCollision(object1->getAABB(), object2->getAABB()) == true)
+		{
+			object1->setPosition(start);
+			return true;
+		}
+		else
+			return false;
+	}
 }

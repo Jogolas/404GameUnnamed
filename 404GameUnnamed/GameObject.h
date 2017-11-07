@@ -14,9 +14,9 @@ using namespace std;
 class GameObject : public Entity
 {
 public:
-	GameObject() {};
-	GameObject(vec3 iposition) {};
-	virtual ~GameObject() { delete collider; }
+	GameObject();
+	GameObject(vec3 iposition);
+	virtual ~GameObject() { delete collider; };
 
 	float getMass();
 	float getInverseMass() { return inverseMass; }
@@ -33,8 +33,7 @@ public:
 	vec3 setVelocity(vec3 vel) { velocity = vel; return velocity; }
 	vec3 getVelocity() { return velocity; }
 
-	Collider* getCollider();
-	AABB getAABB() { return aabb; }
+	Collider* getCollider() { return collider; }
 
 	void clearAccumilator();
 	void init();
@@ -43,7 +42,6 @@ public:
 private:
 	Transform transform;
 	Collider* collider;
-	AABB aabb;
 
 	float mass;
 	float inverseMass = 1 / mass;

@@ -39,6 +39,11 @@ vec3 GameObject::getCenter()
 	return centre;
 }
 
+GameObject::GameObject()
+{
+	init();
+}
+
 GameObject::GameObject(vec3 position)
 {
 	this->position = position;
@@ -81,6 +86,7 @@ void GameObject::update(float dt)
 {
 
 	grav.updateForce(this, dt);
+	collider->update(transform);
 }
 
 GameObject::GameObject()

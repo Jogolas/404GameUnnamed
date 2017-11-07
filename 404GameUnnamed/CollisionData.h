@@ -21,6 +21,7 @@ public:
 	static bool AABBCollisionTest(const AABB* const aabb1, const AABB* const aabb2);
 
 	bool groundCollision(Entity* object1, Entity* Object2);
+	bool playerObjectCollision(Entity* object1, Entity* object2);
 
 private:
 
